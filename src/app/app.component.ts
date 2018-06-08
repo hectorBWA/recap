@@ -1,11 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 
-interface Fighter{
-  name: string;
-  number1?: number;
-  returnNum?(): any ;
+module Vehicle {
+  export class Sedan {
+    make: string;
+    model: string;
+    year: number;
+
+    constructor(make: string, model: string, year: number){
+      this.make = make; 
+      this.model = model;
+      this.year = year;
+    }
+  }
 
 }
 
@@ -15,14 +23,9 @@ interface Fighter{
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app';
-
-  fighter1: Fighter = {name: 'mike', number1: 10};
-  fighter2: Fighter = {name: 'Goku', number1: 5, returnNum: () => {return(50);} };
-
-  ngOnInit(){
-    console.log(this.fighter1, this.fighter2 ,this.fighter2.returnNum);
-  }
+  honda = new Vehicle.Sedan('Ford', 'Focus', 2001);
+  ford = new Vehicle.Sedan('Honda', 'Civic', 2001);
 }
 
