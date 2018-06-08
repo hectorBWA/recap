@@ -1,22 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 
-class CarBrand{
-  protected make: string;
-  constructor(make: string){
-    this.make = make;
-    console.log(this.make);
-  }
-}
+interface Fighter{
+  name: string;
+  number1?: number;
+  returnNum?(): any ;
 
-class Car extends CarBrand{
-  constructor(public make: string, public model: string, public year: number){
-  super(make);
-  }
-  getDetails(){
-    return (this.make, this.model, this.year);
-  }
 }
 
 
@@ -25,25 +15,14 @@ class Car extends CarBrand{
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
-  ford: CarBrand = new CarBrand('ford');
-  dodge: CarBrand = new CarBrand('dodge');
-  honda: Car = new Car ('honda', 'civic', 2001);
+  fighter1: Fighter = {name: 'mike', number1: 10};
+  fighter2: Fighter = {name: 'Goku', number1: 5, returnNum: () => {return(50);} };
 
-  // any: any;
-  // str: string = 'sharks are cool';
-  // num: number = 5;
-  // space: void;
-
-  // chad: null;
-
-  // arr: any[] = [4, 'hello', true, false];
-  // arrTwo: number[] = [5, 7];
-  // arrThree: Array<number> = [4, 6];
-  // arrFour: string[] = ['Hola'];
-  // arrFive: Array<string> = ['hello'];
-
+  ngOnInit(){
+    console.log(this.fighter1, this.fighter2 ,this.fighter2.returnNum);
+  }
 }
 
